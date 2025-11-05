@@ -1,10 +1,10 @@
 import './App.css'
+import Inicio from './pages/Inicio.jsx'
 
 function App() {
   return (
     <div className="app">
-      {/* Contenido principal de la aplicación */}
-      ola mundo
+      <Inicio />
     </div>
   )
 }
