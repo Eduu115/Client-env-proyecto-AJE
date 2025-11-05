@@ -1,16 +1,61 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Frontend - Gestión de Usuarios
 
-Currently, two official plugins are available:
+Aplicación frontend construida con **React + Vite** para demostrar un sistema básico de gestión de usuarios con diferentes perfiles y niveles de acceso.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Objetivo
 
-## React Compiler
+Simular un sistema de gestión de usuarios donde:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Los clientes puedan registrarse e iniciar sesión.
+- Dependiendo del perfil (cliente, trabajador, jefe, administrador) se muestren vistas diferentes.
+- El administrador pueda:
+  - Crear usuarios de distintos tipos.
+  - Gestionar la lista de usuarios.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologías
+
+- [Vite](https://vitejs.dev/) (React + JavaScript)
+- React
+- CSS (estilos simples con `App.css` / `index.css`)
+
+> El frontend está pensado para consumir una API REST (por ejemplo, en Java + Spring Boot) que gestione las tablas `usuarios` y `perfiles`.
+
+---
+
+## Requisitos previos
+
+- [Node.js](https://nodejs.org/) (versión recomendada: 18 o superior)
+- npm (incluido con Node)
+
+---
+
+## Puesta en marcha
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/TU_USUARIO/TU_REPO.git
+cd TU_REPO
+````
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Iniciar el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+Abrir en el navegador la URL que indique la consola, normalmente:
+
+```txt
+http://localhost:5173/
+```
+
