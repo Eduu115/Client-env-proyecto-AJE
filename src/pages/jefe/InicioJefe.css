@@ -91,7 +91,7 @@
 }
 
 .social-link:hover img {
-  filter: invert(1);
+  filter: invert(1); 
 }
 
 .placeholder-checkbox {
@@ -109,10 +109,11 @@
 }
 
 .placeholder-right {
-  width: 50%;
+  width: 50%;       
   display: flex;
   justify-content: center;
 }
+
 
 .placeholder-right img {
   width: 100%;

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;700&display=swap");
+
 html, body, #root{
     margin:0;
     padding:0;
@@ -8,4 +10,5 @@ html, body, #root{
 body{
     /* font-family: Arial, sans-serif; <- Cuando eligjamos fuente general */
     background-color: #f0f0f0;
+    font-family: "Bodoni Moda", "Times New Roman", serif;
 }
