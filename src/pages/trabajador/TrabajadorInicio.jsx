@@ -61,7 +61,7 @@ function TrabajadorInicio() {
             </div>
           </div>
 
-          {/* Newsletter / aviso */}
+          
           <label className="placeholder-checkbox">
             Avísame cuando esta vista esté lista
             <input type="checkbox" />

@@ -26,13 +26,11 @@ function ClienteInicio() {
             sección se adapte mejor a lo que necesitas.
           </p>
 
-          {/* Bloque correo de contacto */}
           <div className="placeholder-contact">
             <p className="placeholder-subtitle">DEJA TUS OPINIONES EN</p>
             <p className="placeholder-email">ejemplo-correo@empresa.com</p>
           </div>
 
-          {/* Bloque redes sociales con iconos */}
           <div className="placeholder-social">
             <p className="placeholder-subtitle">
               SÍGUENOS EN NUESTRAS REDES
