@@ -1,36 +1,30 @@
-import "./TrabajadorInicio.css";
+import "./InicioJefe.css";
 
-function TrabajadorInicio() {
+function InicioJefe() {
   return (
     <main className="inicio-rol">
       <div className="placeholder-page">
         {/* Columna izquierda: texto */}
         <div className="placeholder-left">
-          <p className="placeholder-saludo">HOLA - TRABAJADOR</p>
+          <p className="placeholder-saludo">HOLA - JEFE</p>
 
           <h1 className="placeholder-title">
-            AQUÍ VERÁS
+            TU PANEL DE PROYECTOS
             <br />
-            TUS TAREAS
+            ESTÁ EN CAMINO
           </h1>
 
           <p className="placeholder-text">
-            Estamos preparando esta vista para que puedas ver de un vistazo
-            tus tareas, los proyectos en los que participas y qué viene después.
+            Muy pronto podrás ver aquí el estado de cada proyecto, las fases
+            y cómo va trabajando tu equipo en tiempo real.
           </p>
 
-          <p className="placeholder-text">
-            Cuando esté disponible, tendrás aquí un resumen claro de tu trabajo
-            diario y el progreso de cada proyecto.
-          </p>
 
-          {/* Bloque correo de contacto */}
           <div className="placeholder-contact">
             <p className="placeholder-subtitle">DEJA TUS OPINIONES EN</p>
             <p className="placeholder-email">ejemplo-correo@empresa.com</p>
           </div>
 
-          {/* Bloque redes sociales con iconos */}
           <div className="placeholder-social">
             <p className="placeholder-subtitle">
               SÍGUENOS EN NUESTRAS REDES
@@ -61,7 +55,6 @@ function TrabajadorInicio() {
             </div>
           </div>
 
-          {/* Newsletter / aviso */}
           <label className="placeholder-checkbox">
             Avísame cuando esta vista esté lista
             <input type="checkbox" />
@@ -71,8 +64,8 @@ function TrabajadorInicio() {
         {/* Columna derecha: solo imagen */}
         <div className="placeholder-right">
           <img
-            src="/img/foto_landing2.png"
-            alt="Vista previa de tareas del trabajador"
+            src="/img/foto_landing1.png"
+            alt="Vista previa del panel de proyectos"
           />
         </div>
       </div>
@@ -80,4 +73,4 @@ function TrabajadorInicio() {
   );
 }
 
-export default TrabajadorInicio;
+export default InicioJefe;
