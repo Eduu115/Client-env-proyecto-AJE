@@ -21,11 +21,6 @@ function ClienteInicio() {
             tus proyectos, solicitudes y todo lo que tengas con la empresa.
           </p>
 
-          <p className="placeholder-text">
-            Por ahora, puedes dejarnos tus comentarios o ideas para que esta
-            sección se adapte mejor a lo que necesitas.
-          </p>
-
           <div className="placeholder-contact">
             <p className="placeholder-subtitle">DEJA TUS OPINIONES EN</p>
             <p className="placeholder-email">ejemplo-correo@empresa.com</p>
