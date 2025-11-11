@@ -1,5 +1,8 @@
 import './App.css'
 import Inicio from './pages/Inicio.jsx'
+import { Link } from 'react-router-dom'
+import RoutesConfig from './RoutesConfig.jsx'
+
 import AdminInicio from './pages/admin/AdminInicio.jsx'
 import AdminCrearUsuario from './pages/admin/AdminCrearUsuario.jsx'
 import AdminGestionUsuarios from './pages/admin/AdminGestionUsuarios.jsx'
@@ -12,17 +15,11 @@ import ClienteInicio from './pages/cliente/ClienteInicio.jsx'
 
 function App() {
   return (
-    <div className="app">
-      {/* <Inicio /> */}
-      {/* <AdminInicio /> */}
-      {/* <AdminCrearUsuario /> */}
-      {/* <AdminGestionUsuarios /> */}
-      {/* <Login/> */}
-      {/* <RegistroCliente/>  */}
-      <InicioJefe />
-      <TrabajadorInicio />
-      <ClienteInicio />
+    <div className="app">  
+      {/* Componente externo que contiene todas las rutas */}
+      <RoutesConfig />
     </div>
+   
   )
 }
 

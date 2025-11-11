@@ -1,7 +1,22 @@
 import "./Inicio.css";
 
+import { useNavigate } from "react-router-dom"; //hook
+
 // Componente de la página de inicio (landing page)
 function Inicio() {
+  
+  // funciones de redirect para navegar con botones
+  
+  const navigate = useNavigate(); // inicio el hook
+
+  const irALogin = () =>{
+    navigate('/login')
+  }
+
+  const irARegister = () => {
+    navigate('/registro')
+  }
+
   return (
     <main className="inicio">
       <div id="padre">
@@ -32,8 +47,8 @@ function Inicio() {
               </p>
             </div>
             <div className="botones-landing">
-              <button className="btn-registrarse">Registrarse</button>
-              <button className="btn-iniciar-sesion">Iniciar Sesión</button>
+              <button className="btn-registrarse" onClick={irARegister}>Registrarse</button>
+              <button className="btn-iniciar-sesion" onClick={irALogin}>Iniciar Sesión</button>
             </div>
           </div>
         </div>
