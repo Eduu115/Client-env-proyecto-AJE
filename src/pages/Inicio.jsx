@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom"; //hook
 // Componente de la página de inicio (landing page)
 function Inicio() {
   const navigate = useNavigate(); // inicio el hook
-  // funciones de redirect para navegar con botones
 
   return (
     <main className="inicio">
