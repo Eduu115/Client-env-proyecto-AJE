@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;700&display=swap");
+
 .register-page {
-  height: 100vh;
-  padding: 40px 80px;
+  height: 100vh; /* ocupa toda la pantalla, el 100vh base ya lo da #root */
+  padding: 40px 180px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,9 +50,8 @@
   border: 1px solid #aaa;
   background: transparent;
   outline: none;
-  border-radius: 999px; 
+  border-radius: 999px;
 }
-
 
 .register-form input:focus {
   border-color: #000;

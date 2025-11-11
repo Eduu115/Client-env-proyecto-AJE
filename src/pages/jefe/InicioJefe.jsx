@@ -1,75 +1,79 @@
 import "./InicioJefe.css";
+import Navbar from "../../components/Navbar"; 
 
 function InicioJefe() {
   return (
-    <main className="inicio-rol">
-      <div className="placeholder-page">
-        {/* Columna izquierda: texto */}
-        <div className="placeholder-left">
-          <p className="placeholder-saludo">HOLA - JEFE</p>
+    <>
+      <Navbar />
 
-          <h1 className="placeholder-title">
-            TU PANEL DE PROYECTOS
-            <br />
-            ESTÁ EN CAMINO
-          </h1>
+      <main className="jefe-page">
+        <div className="placeholder-page">
+          {/* Columna izquierda: texto */}
+          <div className="placeholder-left">
+            <p className="placeholder-saludo">HOLA - JEFE</p>
 
-          <p className="placeholder-text">
-            Muy pronto podrás ver aquí el estado de cada proyecto, las fases
-            y cómo va trabajando tu equipo en tiempo real.
-          </p>
+            <h1 className="placeholder-title">
+              TU PANEL DE PROYECTOS
+              <br />
+              ESTÁ EN CAMINO
+            </h1>
 
-
-          <div className="placeholder-contact">
-            <p className="placeholder-subtitle">DEJA TUS OPINIONES EN</p>
-            <p className="placeholder-email">ejemplo-correo@empresa.com</p>
-          </div>
-
-          <div className="placeholder-social">
-            <p className="placeholder-subtitle">
-              SÍGUENOS EN NUESTRAS REDES
+            <p className="placeholder-text">
+              Muy pronto podrás ver aquí el estado de cada proyecto, las fases
+              y cómo va trabajando tu equipo en tiempo real.
             </p>
-            <div className="social-icons">
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="social-link"
-              >
-                <img
-                  src="/logotipo-de-instagram.png"
-                  alt="Instagram"
-                />
-              </a>
-              <a
-                href="https://www.linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="social-link"
-              >
-                <img
-                  src="/linkedin.png"
-                  alt="LinkedIn"
-                />
-              </a>
+
+            <div className="placeholder-contact">
+              <p className="placeholder-subtitle">DEJA TUS OPINIONES EN</p>
+              <p className="placeholder-email">ejemplo-correo@empresa.com</p>
             </div>
+
+            <div className="placeholder-social">
+              <p className="placeholder-subtitle">
+                SÍGUENOS EN NUESTRAS REDES
+              </p>
+              <div className="social-icons">
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                >
+                  <img
+                    src="/logotipo-de-instagram.png"
+                    alt="Instagram"
+                  />
+                </a>
+                <a
+                  href="https://www.linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-link"
+                >
+                  <img
+                    src="/linkedin.png"
+                    alt="LinkedIn"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <label className="placeholder-checkbox">
+              Avísame cuando esta vista esté lista
+              <input type="checkbox" />
+            </label>
           </div>
 
-          <label className="placeholder-checkbox">
-            Avísame cuando esta vista esté lista
-            <input type="checkbox" />
-          </label>
+          {/* Columna derecha: solo imagen */}
+          <div className="placeholder-right">
+            <img
+              src="/img/foto_landing1.png"
+              alt="Vista previa del panel de proyectos"
+            />
+          </div>
         </div>
-
-        {/* Columna derecha: solo imagen */}
-        <div className="placeholder-right">
-          <img
-            src="/img/foto_landing1.png"
-            alt="Vista previa del panel de proyectos"
-          />
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
 

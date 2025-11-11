@@ -3,7 +3,7 @@
 .crear-usuario-page {
   height: 100vh;
   box-sizing: border-box;
-  padding: 40px 80px;
+  padding: 130px 80px 40px 80px;  
   display: flex;
   flex-direction: column;
   font-family: "Bodoni Moda", "Times New Roman", serif;
@@ -11,7 +11,7 @@
 
 .crear-usuario-header h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -42,7 +42,7 @@
 }
 
 .crear-usuario-form label {
-  font-size: 17px;
+  font-size: 15px;
   margin-bottom: 4px;
   font-family: Arial, Helvetica, sans-serif !important;
 }

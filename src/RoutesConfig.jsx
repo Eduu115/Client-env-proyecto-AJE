@@ -8,6 +8,7 @@ import RegistroCliente from "./pages/RegistroCliente.jsx";
 import InicioJefe from "./pages/jefe/InicioJefe.jsx";
 import TrabajadorInicio from "./pages/trabajador/trabajadorInicio.jsx";
 import ClienteInicio from "./pages/cliente/ClienteInicio.jsx";
+import NotFound404 from "./pages/errors/Error404.jsx";
 
 export default function RoutesConfig() {
   return (
@@ -24,7 +25,7 @@ export default function RoutesConfig() {
       <Route path="/trabajador/inicio" element={<TrabajadorInicio />} />
       <Route path="/cliente/inicio" element={<ClienteInicio />} />
 
-      <Route path="*" element={<h1>Página no encontrada</h1>} />
+      <Route path="/errors/404" element={<NotFound404 />} />
     </Routes>
   );
 }

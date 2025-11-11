@@ -7,8 +7,10 @@
     transition: background-color 0.3s, backdrop-filter 0.3s;
     z-index: 1000;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: rgba(122, 118, 118, 0.315);
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -21,12 +23,12 @@ nav.blur {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-img{
+.navbar img{
     height: 75px;
     border-radius: 10px;
 }
 
-img:hover{
+.navbar img:hover{
     cursor: pointer;
     box-shadow: 3px 3px #aaa;
 }
@@ -38,7 +40,7 @@ img:hover{
     gap: 40px ;
 }
 
-button{
+.navbar button{
     width: 200px;
     height: 50px;
     border: 0px;
@@ -47,14 +49,13 @@ button{
     transition-duration:0.2s ;
 }
 
-button:hover{
+.navbar button:hover{
     transform: scale(1.02);
     box-shadow: 3px 3px #aaa;
     cursor: pointer;
 }
 
-.log-out:hover{
+.navbar .log-out:hover{
     background-color: #ff0000;
     box-shadow: #b41b1b;
 }
-/* Terminal estilos button y transparencia del nav */

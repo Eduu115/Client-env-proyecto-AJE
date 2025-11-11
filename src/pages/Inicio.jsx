@@ -4,8 +4,6 @@ import { irALogin } from "./Redirects";
 import { irARegister } from "./Redirects";
 import { useNavigate } from "react-router-dom"; //hook
 
-
-
 // Componente de la página de inicio (landing page)
 function Inicio() {
   const navigate = useNavigate(); // inicio el hook
@@ -40,8 +38,18 @@ function Inicio() {
               </p>
             </div>
             <div className="botones-landing">
-              <button className="btn-registrarse" onClick={() => irARegister(navigate)}>Registrarse</button>
-              <button className="btn-iniciar-sesion" onClick={()=>irALogin(navigate)}>Iniciar Sesión</button>
+              <button
+                className="btn-registrarse"
+                onClick={() => irARegister(navigate)}
+              >
+                Registrarse
+              </button>
+              <button
+                className="btn-iniciar-sesion"
+                onClick={() => irALogin(navigate)}
+              >
+                Iniciar Sesión
+              </button>
             </div>
           </div>
         </div>
