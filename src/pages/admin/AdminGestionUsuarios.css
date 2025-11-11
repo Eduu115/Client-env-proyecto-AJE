@@ -1,0 +1,9 @@
+.admin-gestion-usuarios {
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 130px 80px 40px 80px;  
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  display: flex;
+  flex-direction: column;
+}

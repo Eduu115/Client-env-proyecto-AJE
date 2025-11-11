@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap");
 
-.inicio-rol {
-  height: 100vh;
+/* Raíz de la vista del jefe (debajo del navbar fijo) */
+.jefe-page {
+  height: 100vh;                       /* ocupa toda la pantalla */
+  padding: 100px 80px 40px 80px;       /* 100px ≈ altura navbar + margen */
+  box-sizing: border-box;
 }
+
+/* ---------------------- */
 
 .placeholder-page {
   height: 100%;
-  padding: 40px 80px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -91,7 +95,7 @@
 }
 
 .social-link:hover img {
-  filter: invert(1); 
+  filter: invert(1);
 }
 
 .placeholder-checkbox {
@@ -109,11 +113,10 @@
 }
 
 .placeholder-right {
-  width: 50%;       
+  width: 60%;
   display: flex;
   justify-content: center;
 }
-
 
 .placeholder-right img {
   width: 100%;

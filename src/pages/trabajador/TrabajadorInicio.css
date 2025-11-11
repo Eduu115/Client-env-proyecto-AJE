@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap");
 
-.inicio-rol {
-  height: 100vh;
+/* Raíz de la vista del trabajador (debajo del navbar fijo) */
+.trabajador-page {
+  height: 100vh;                 /* ocupa la pantalla completa */
+  padding: 100px 80px 40px 80px; /* 100px ≈ altura del navbar + margen superior */
+  box-sizing: border-box;
 }
 
+/* Contenido en dos columnas */
 .placeholder-page {
   height: 100%;
-  padding: 40px 80px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -109,7 +112,7 @@
 }
 
 .placeholder-right {
-  width: 50%;
+  width: 60%;
   display: flex;
   justify-content: center;
 }

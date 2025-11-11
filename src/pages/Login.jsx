@@ -2,7 +2,7 @@ import "./Login.css";
 
 function Login() {
   return (
-    <div className="login-page">
+    <main className="login-page">
       <div className="login-left">
         <img
           src="/img/foto_landing1.png"
@@ -33,7 +33,7 @@ function Login() {
           ¿No tienes cuenta? <a href="/registro">Regístrate</a>
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 

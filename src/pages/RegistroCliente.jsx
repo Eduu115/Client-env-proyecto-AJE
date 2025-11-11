@@ -2,7 +2,7 @@ import "./RegistroCliente.css";
 
 function RegistroCliente() {
   return (
-    <div className="register-page">
+    <main className="register-page">
       <div className="register-left">
         <h1 className="register-title">REGISTRO:</h1>
 
@@ -52,7 +52,7 @@ function RegistroCliente() {
         </form>
 
         <p className="register-login-link">
-          ¿Ya tienes cuenta? <a href="">Login</a>
+          ¿Ya tienes cuenta? <a href="/login">Login</a>
         </p>
       </div>
 
@@ -62,7 +62,7 @@ function RegistroCliente() {
           alt="Imagen lateral de registro"
         />
       </div>
-    </div>
+    </main>
   );
 }
 

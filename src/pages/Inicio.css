@@ -3,26 +3,23 @@
 .inicio {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#padre {
-  gap: 10px;
-  overflow-y: hidden;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 50% 50%;
-  padding: 10px 30px;
+  height: 100vh;       
+  overflow: hidden;   
   box-sizing: border-box;
 }
 
+#padre {
+    gap: 10px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 54% 45%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
 .hijo {
-  padding-top: 10px;
-  padding-bottom: 10px;
   margin: 0;
-  height: 100%;
   width: 100%;
 }
 
@@ -50,7 +47,7 @@
 
 .texto-landing h1 {
   font-family: "Bodoni Moda", "Times New Roman", serif;
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   margin-bottom: 20px;
   line-height: 1;
   letter-spacing: 4px;
@@ -84,15 +81,13 @@
   text-align: justify;
 }
 
-/* Zona de botones */
 .botones-landing {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 16px;
 }
 
-/* Botones estilo login/registro */
 .btn-registrarse,
 .btn-iniciar-sesion {
   border: 1px solid #000;
