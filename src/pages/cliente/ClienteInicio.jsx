@@ -1,8 +1,10 @@
 import "./ClienteInicio.css";
+import Navbar from "../../components/Navbar";
 
 function ClienteInicio() {
   return (
     <main className="inicio-rol">
+      <Navbar />
       <div className="placeholder-page">
         {/* Columna izquierda: texto */}
         <div className="placeholder-left">

@@ -1,0 +1,60 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 5px; 
+    max-height: 10%;
+    align-items: center;
+    transition: background-color 0.3s, backdrop-filter 0.3s;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(122, 118, 118, 0.315);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav.blur {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+img{
+    height: 75px;
+    border-radius: 10px;
+}
+
+img:hover{
+    cursor: pointer;
+    box-shadow: 3px 3px #aaa;
+}
+
+.links-container{
+    padding-left: 3.5%;
+    display: flex;
+    justify-content: space-around;
+    gap: 40px ;
+}
+
+button{
+    width: 200px;
+    height: 50px;
+    border: 0px;
+    border-radius: 8px;
+    transition: transform, box-shadow, background-color;
+    transition-duration:0.2s ;
+}
+
+button:hover{
+    transform: scale(1.02);
+    box-shadow: 3px 3px #aaa;
+    cursor: pointer;
+}
+
+.log-out:hover{
+    background-color: #ff0000;
+    box-shadow: #b41b1b;
+}
+/* Terminal estilos button y transparencia del nav */

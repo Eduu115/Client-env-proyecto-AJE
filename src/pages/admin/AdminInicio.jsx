@@ -1,3 +1,4 @@
+import Navbar from "../../components/Navbar";
 import "./AdminInicio.css";
 
 function AdminInicio() {
