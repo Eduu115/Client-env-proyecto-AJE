@@ -1,12 +1,20 @@
 import "./Inicio.css";
 
+import { irALogin } from "./Redirects";
+import { irARegister } from "./Redirects";
+import { useNavigate } from "react-router-dom"; //hook
+
+
+
 // Componente de la página de inicio (landing page)
 function Inicio() {
+  const navigate = useNavigate(); // inicio el hook
+  // funciones de redirect para navegar con botones
+
   return (
     <main className="inicio">
       <div id="padre">
         {/* Parto el div en 4 para hacer una cuadricula mas custom */}
-
         <div className="hijo conimagen">
           <img src="/img/foto_landing1.png" alt="Imagen 1 de portada" />
         </div>
@@ -32,8 +40,8 @@ function Inicio() {
               </p>
             </div>
             <div className="botones-landing">
-              <button className="btn-registrarse">Registrarse</button>
-              <button className="btn-iniciar-sesion">Iniciar Sesión</button>
+              <button className="btn-registrarse" onClick={() => irARegister(navigate)}>Registrarse</button>
+              <button className="btn-iniciar-sesion" onClick={()=>irALogin(navigate)}>Iniciar Sesión</button>
             </div>
           </div>
         </div>
