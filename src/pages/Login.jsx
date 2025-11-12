@@ -1,90 +1,31 @@
 import "./Login.css";
-import { irAHome } from "./Redirects";
 import { useNavigate } from "react-router-dom"; //hook
-import { irARegister, irAInicio } from "./Redirects";
+import { irARegister, irAInicio, irAHome } from "./Redirects";
+import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const navigate = useNavigate(); // inicio el hook
 
   const form = document.getElementById("login-form");
-  const btn_enviar = document.querySelector(".login-button");
-  if (btn_enviar){
 
-    btn_enviar.addEventListener("submit", function (event) {
-    event.preventDefault();
-    // Aquí puedes agregar la lógica para manejar el inicio de sesión
-    console.log("Formulario de inicio de sesión enviado");
-    
-    // inicializamos usuario final
-    let usuarioFinal = [];
-
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    const loginData = {
-      username: username,
-      password: password,
-    };
-
-    console.log("username:", username);
-    console.log("Password:", password);
-
-    let idPerfil = 4; // Valor predeterminado para idPerfil (Cliente)
-
-    fetch("http://localhost:9001/usuarios/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),  
-    
-    })
-    .then(
-      response => {
-      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-      return response.json();
-    })
-    .then((data) => {
-
-      console.log("Data recibida:", data);
-
-      usuarioFinal = data;
-
-      console.log("Success:", usuarioFinal);
-
-      alert("Inicio de sesión exitoso");
-      
-      // Guardar en el almacenamiento local
-      saveDataToLocalStorage(usuarioFinal);
-      console.log("Usuario guardado en localStorage:", usuarioFinal);
+  const { login } = useAuth();
+  const [username, setUsername] = useState(''); 
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
 
-      idPerfil = usuarioFinal.perfil.idPerfil;
-      alert("ID Perfil: " + idPerfil);
-      alert("Redirigiendo...");
-      
+  const onSubmit = async function (e) {
+    e.preventDefault();
+    const ok = await login(username, password);
+    if (!ok){
+      setError('Credenciales inválidas');
+    } else {
       irAHome(navigate);
+    }
+  };
 
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    }),
-
-    // Reiniciar el formulario después de enviar
-    form.reset();
-    });
   
-  }
-  
-  function saveDataToLocalStorage(x){       
-      var receivedData = JSON.stringify(x);
-      console.log(receivedData);
-      localStorage.setItem('user', receivedData);
-  }
-
- 
-  
-
   return (
     <main className="login-page">
       <div className="login-left">
@@ -97,15 +38,15 @@ function Login() {
       <div className="login-right">
         <h1 className="login-title">LOGIN:</h1>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={onSubmit}>
           <div className="login-row">
             <label htmlFor="username">Username</label>
-            <input id="username" name="username" type="text" />
+            <input id="username" name="username" type="text" onChange={e => setUsername(e.target.value)} required />
           </div>
 
           <div className="login-row">
             <label htmlFor="password">Contraseña</label>
-            <input id="password" name="password" type="password" />
+            <input id="password" name="password" type="password" onChange={e => setPassword(e.target.value)} required />
           </div>
 
           <button type="submit" className="login-button">
