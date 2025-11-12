@@ -9,29 +9,38 @@ export function AuthProvider({ children }) {
     }, []);
 
     const login = async (username, password) => {
-        const user= await
-            fetch("http://localhost:9001/usuarios/login", {
+        try {
+            const response = await fetch("http://localhost:9001/usuarios/login", {
             method: "POST",
             headers: {
-                'Authorization': `Basic ${username}:${password}`,
+                'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
                 'Content-Type': 'application/json'
             }
-        }).then(response => {
-            if (!response.ok){
-                return false;
-                // throw new Error(`HTTP error ${response.status}`);
-            }else{
-                setUser(user); 
-                localStorage.setItem('user', JSON.stringify(u));
-                return true;
+            });
+
+            if (!response.ok) {
+            return false;
             }
-        });
+
+            // Aquí parseamos la respuesta JSON del backend
+            const userData = await response.json();
+
+            // Guardamos en estado y en localStorage
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData));
+
+            return true;
+        } catch (error) {
+            console.error("Error en login:", error);
+            return false;
+        }
     };
+
 
     const logout = () => {
         setUser(null); localStorage.removeItem('user');
     };
-    
+
     return <AuthContext.Provider value={{
         user, login,
         logout
