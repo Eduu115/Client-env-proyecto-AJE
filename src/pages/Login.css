@@ -94,9 +94,11 @@
   color: #fff;
 }
 
+
 .login-register-link {
   margin-top: 32px;
   font-size: 18px;
+  padding-left: 10%;
 }
 
 .login-register-link a {

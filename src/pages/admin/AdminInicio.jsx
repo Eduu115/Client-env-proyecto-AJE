@@ -4,8 +4,6 @@ import "./AdminInicio.css";
 function AdminInicio() {
   return (
     <>
-      <Navbar />
-
       <main className="admin-menu">
         <div className="admin-header">
           <h1>MENU DE ADMINISTRACION</h1>
