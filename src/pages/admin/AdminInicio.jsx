@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { irAAdminCrearUsuario, irAAdminGestionUsuarios } from "../Redirects";
+import Navbar from "/src/components/navbar";
 import "./AdminInicio.css";
 
 function AdminInicio() {
@@ -7,6 +8,7 @@ function AdminInicio() {
 
   return (
     <main className="admin-menu">
+      <Navbar />
       <div className="admin-header">
         <h1>MENU DE ADMINISTRACION</h1>
       </div>
