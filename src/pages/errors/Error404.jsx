@@ -7,8 +7,6 @@ function NotFound404() {
 
   return (
     <>
-      <Navbar />
-
       <main className="not-found-page">
         <div className="not-found-content">
           <div className="not-found-text">

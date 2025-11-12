@@ -1,6 +1,6 @@
 .admin-menu {
   height: 100vh;
-  padding: 130px 80px 24px 80px; /* 100px arriba para dejar sitio al navbar */
+  padding: 80px 80px 24px 80px; /* 100px arriba para dejar sitio al navbar */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
