@@ -1,17 +1,21 @@
 import Navbar from "../../components/Navbar";
 import "./AdminCrearUsuario.css";
+import { useNavigate } from "react-router-dom";
+import { irAAdminInicio } from "../Redirects";
 
 function AdminCrearUsuario() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
 
       <main className="crear-usuario-page">
-        <header className="crear-usuario-header">
+        <div className="crear-usuario-header">
           <h1>CREACION DE USUARIOS</h1>
-        </header>
+        </div>
 
-        <section className="crear-usuario-main">
+        <div className="crear-usuario-main">
           <form className="crear-usuario-form">
             <div className="crear-row">
               <label htmlFor="nombre">Nombre</label>
@@ -67,7 +71,17 @@ function AdminCrearUsuario() {
               Crear usuario
             </button>
           </form>
-        </section>
+        </div>
+
+        <div className="boton-ir-atras">
+          <button
+            type="button"
+            className="crear-usuario-back-button"
+            onClick={() => irAAdminInicio(navigate)}
+          >
+            ← Volver al menú admin
+          </button>
+        </div>
       </main>
     </>
   );

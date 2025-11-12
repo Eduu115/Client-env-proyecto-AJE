@@ -110,3 +110,35 @@
 .login-register-link a:hover {
   opacity: 0.8;
 }
+
+.text-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #000;
+  cursor: pointer;
+}
+
+.text-link:hover {
+  opacity: 0.8;
+}
+
+.login-back-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 12px;
+    margin-top: 50px;
+    font: inherit;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+.back-button:hover {
+  opacity: 0.7;
+}

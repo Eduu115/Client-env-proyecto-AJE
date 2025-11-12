@@ -1,6 +1,7 @@
 import "./Login.css";
 import { irAHome } from "./Redirects";
 import { useNavigate } from "react-router-dom"; //hook
+import { irARegister, irAInicio } from "./Redirects";
 
 function Login() {
   const navigate = useNavigate(); // inicio el hook
@@ -113,8 +114,22 @@ function Login() {
         </form>
 
         <p className="login-register-link">
-          ¿No tienes cuenta? <a href="/registro">Regístrate</a>
+          ¿No tienes cuenta?{" "}
+          <button
+            type="button"
+            className="text-link"
+            onClick={() => irARegister(navigate)}
+          >
+            Regístrate
+          </button>
         </p>
+                <button
+                  type="button"
+                  className="login-back-button"
+                  onClick={() => irAInicio(navigate)}
+                >
+                  ← Volver al inicio
+                </button>
       </div>
     </main>
   );

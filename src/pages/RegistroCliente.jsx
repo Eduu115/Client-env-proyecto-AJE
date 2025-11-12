@@ -1,9 +1,15 @@
 import "./RegistroCliente.css";
+import { useNavigate } from "react-router-dom"; 
+import { irALogin, irAInicio } from "./Redirects";
 
 function RegistroCliente() {
+  const navigate = useNavigate(); 
+
   return (
     <main className="register-page">
       <div className="register-left">
+        
+
         <h1 className="register-title">REGISTRO:</h1>
 
         <form className="register-form">
@@ -52,8 +58,23 @@ function RegistroCliente() {
         </form>
 
         <p className="register-login-link">
-          ¿Ya tienes cuenta? <a href="/login">Login</a>
+          ¿Ya tienes cuenta?{" "}
+          <button
+            type="button"
+            className="text-link"
+            onClick={() => irALogin(navigate)}
+          >
+            Login
+          </button>
         </p>
+
+        <button
+          type="button"
+          className="register-back-button"
+          onClick={() => irAInicio(navigate)}
+        >
+          ← Volver al inicio
+        </button>
       </div>
 
       <div className="register-right">
@@ -62,6 +83,7 @@ function RegistroCliente() {
           alt="Imagen lateral de registro"
         />
       </div>
+      
     </main>
   );
 }
