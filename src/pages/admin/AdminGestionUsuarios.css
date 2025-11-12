@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f0f0;
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  color: #2e2e2e;
+}
+
 .admin-gestion-usuarios {
   height: 100vh;
   box-sizing: border-box;
@@ -6,4 +20,35 @@
     sans-serif;
   display: flex;
   flex-direction: column;
+}
+
+h1 {
+  color: #53646f;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  table-layout: fixed; 
+}
+
+thead {
+  background: #363636;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+th,td {
+  padding: 14px 12px;
+  text-align: center;
+  border-bottom: 1px solid #cbcecf;
+  overflow-wrap: anywhere;
 }
