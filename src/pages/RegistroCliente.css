@@ -116,3 +116,19 @@
   height: 80vh;
   object-fit: cover;
 }
+
+.register-back-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 12px;
+    margin-top: 30px;
+    font: inherit;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+.back-button:hover {
+  opacity: 0.7;
+}

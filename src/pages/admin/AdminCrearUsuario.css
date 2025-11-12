@@ -3,7 +3,7 @@
 .crear-usuario-page {
   height: 100vh;
   box-sizing: border-box;
-  padding: 130px 80px 40px 80px;  
+  padding: 130px 80px 40px 80px;
   display: flex;
   flex-direction: column;
   font-family: "Bodoni Moda", "Times New Roman", serif;
@@ -17,7 +17,7 @@
 }
 
 .crear-usuario-main {
-  flex: 1;
+  flex: 1;                       /* ocupa todo el espacio central */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,4 +95,24 @@
   box-shadow: none;
   background-color: #000;
   color: #fff;
+}
+
+.boton-ir-atras {
+  align-self: flex-start;  
+  margin-top: auto;        
+}
+
+.crear-usuario-back-button {
+  background: none;
+  border: none;
+  padding: 64px;
+  font: inherit;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  opacity: 0.7;
 }
