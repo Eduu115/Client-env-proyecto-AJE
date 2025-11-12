@@ -139,6 +139,6 @@
     letter-spacing: 2px;
     cursor: pointer;
 }
-.back-button:hover {
+.login-back-button:hover {
   opacity: 0.7;
 }
