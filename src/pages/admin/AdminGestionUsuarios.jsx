@@ -16,7 +16,7 @@ function AdminGestionUsuarios() {
                   <th>Correo</th>
                   <th>ROL</th>
                   <th>EDITAR</th>
-                  <th>VER?</th>
+                  <th>ELIMINAR</th>
                 </tr>
               </thead>
               <tbody>
