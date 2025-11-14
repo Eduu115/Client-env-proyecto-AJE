@@ -1,5 +1,9 @@
-// primero cargamos el user del localstorage y segun su perfil lo mandamos a una u otra pagina
+// importamos logout para usarlo si es necesario
+import logout from "../utils/logout.js";
+// importamos los symbol de perfiles
+import { ROLES } from "../utils/perfilSymbols.js";
 
+// primero cargamos el user del localstorage y segun su perfil lo mandamos a una u otra pagina
 // cargamos datos y definimos variables
 
 let logged = false;
@@ -13,9 +17,24 @@ console.log("Perfil del user en Redirects.js: ", perfil);
 if (user) logged = true; 
 console.log("logged: ", logged);
 
-
-// importamos los symbol de perfiles
-import { ROLES } from "../utils/perfilSymbols.js";
+export function logoutAndRedirect(navigate) {
+  let respuesta = window.confirm("¿Estás seguro de que deseas cerrar sesión?");
+  if (respuesta) {
+    // validamos si hay un usuario logueado
+    if (!logged) {
+      console.log("No hay ningún usuario logueado.");
+      return;
+    }
+    // Si el usuario confirma, cerramos sesión
+    console.log("Cerrando sesión...");
+    logout();
+    navigate('/inicio');
+  } else {
+    // Si el usuario cancela, no hacemos nada
+    console.log("Cierre de sesión cancelado.");
+    alert("¡Me alegra que te quedes con nosotros!");
+  }
+}
 
 export function irALogin(navigate){
     if (logged) {
