@@ -3,6 +3,8 @@ import './Navbar.css'
 import './navbarBlur.js'
 import { useNavigate } from "react-router-dom"; //hook
 
+const user = JSON.parse(localStorage.getItem('user'));
+
 function Navbar() {
   const navigate = useNavigate(); // inicio el hook
 
@@ -19,7 +21,7 @@ function Navbar() {
 
       <div className='saludo-container'>
         <p className='saludo'>
-          Hola - QUIEN SEAS
+          Hola - {user ? user.name : 'Invitado'}
           {/* FALTA ESTO */}
         </p>
       </div>
