@@ -1,6 +1,10 @@
 // Dependencias
 import { Routes, Route } from "react-router-dom";
 
+// Dependencias internas
+import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+import { ROLES } from "./utils/perfilSymbols.js";
+
 // Landing
 import Inicio from "./pages/Inicio.jsx";
 
@@ -11,6 +15,7 @@ import TrabajadorLayout from "./layouts/TrabajadorLayout";
 import ClienteLayout from "./layouts/ClienteLayout";
 
 // Pages
+import Unauthorized from "./pages/errors/Unauthorized.jsx"
 import AdminInicio from "./pages/admin/AdminInicio.jsx";
 import AdminCrearUsuario from "./pages/admin/AdminCrearUsuario.jsx";
 import AdminGestionUsuarios from "./pages/admin/AdminGestionUsuarios.jsx";
@@ -27,10 +32,12 @@ export default function RoutesConfig() {
       {/* Cualquier otra ruta */}
       <Route path="*" element={<NotFound404 />} />
       {/* DEFAULT - LANDING */}
-      <Route path="/" element={<Inicio />} />
+      <Route path="/" element={<ProtectedRoute roles={[ROLES.GUEST]} redirectTo="/login" />}>
+        <Route index element={<Inicio />} />
+      </Route>
 
       {/* PUBLICAS */}
-      <Route path="/unauthorized" element={<Unauthorized />} />
+      <Route path="/errors/unauthorized" element={<Unauthorized />} />
       <Route path="/errors/404" element={<NotFound404 />} />
       {/* ESTO ESTA desprotegido, todos pueden logearse o registrarse */}
       <Route path="/login" element={<Login />} />

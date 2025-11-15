@@ -1,25 +1,18 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { Navigate, Outlet } from "react-router-dom";
+import { PERMISOS, ROLES } from "../utils/perfilSymbols";
 
-export default function ProtectedRoute({ children, roles = [] }) {
-  const { user } = useAuth();
+export default function ProtectedRoute({ roles = [], redirectTo = "/unauthorized" }) {
+  // Obtener usuario del localStorage o asignar GUEST por defecto
+  const user = JSON.parse(localStorage.getItem("user")) || { perfil: { nombre: ROLES.GUEST } };
 
-  // 1. Si no está logueado → al login
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  const userRole = user.perfil?.nombre;
+  const userLevel = PERMISOS[userRole] || 0;
 
-  // 2. Si no tiene perfil → no autorizado
-  if (!user.perfil || !user.perfil.nombre) {
-    return <Navigate to="/errors/unauthorized" replace />;
-  }
+  // Si no hay roles definidos para la ruta, cualquier usuario puede acceder
+  if (roles.length === 0) return <Outlet />;
 
-  const userRole = user.perfil.nombre;
+  // Verifica si el usuario tiene nivel >= al nivel de alguno de los roles permitidos
+  const allowed = roles.some(role => userLevel >= (PERMISOS[role] || 0));
 
-  // 3. Si la ruta requiere roles, y el usuario NOOOOO está en esa lista de ROLES PERMITIDOS:
-  if (roles.length > 0 && !roles.includes(userRole)) {
-    return <Navigate to="/errors/unauthorized" replace />;
-  }
-
-  return children;
+  return allowed ? <Outlet /> : <Navigate to={redirectTo} replace />;
 }

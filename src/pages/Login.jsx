@@ -1,6 +1,6 @@
 import "./Login.css";
 import { useNavigate } from "react-router-dom"; //hook
-import { irARegister, irAInicio, irAHome } from "./Redirects";
+import { irARegister, irAInicio, irAHome, loginAsGuest } from "./Redirects";
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
@@ -70,6 +70,12 @@ function Login() {
                   onClick={() => irAInicio(navigate)}
                 >
                   ← Volver al inicio
+                </button>
+                <button
+                  className="login-back-button"
+                  onClick={() => loginAsGuest(navigate)}
+                >
+                  - Entrar como invitado
                 </button>
       </div>
     </main>

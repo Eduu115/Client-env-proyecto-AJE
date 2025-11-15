@@ -10,7 +10,7 @@ let logged = false;
 
 const user = JSON.parse(localStorage.getItem("user"));
 
-let perfil = null;
+let perfil = "GEST"; // por defecto GUEST
 
 if (user) perfil = user.perfil.nombre;
 console.log("Perfil del user en Redirects.js: ", perfil);
@@ -28,7 +28,7 @@ export function logoutAndRedirect(navigate) {
     // Si el usuario confirma, cerramos sesión
     console.log("Cerrando sesión...");
     logout();
-    navigate('/inicio');
+    navigate('/');
   } else {
     // Si el usuario cancela, no hacemos nada
     console.log("Cierre de sesión cancelado.");
@@ -37,19 +37,19 @@ export function logoutAndRedirect(navigate) {
 }
 
 export function irALogin(navigate){
-    if (logged) {
-      irAHome(navigate);
-    }else {
-      navigate('/login')
-    }
+  if (logged) {
+    irAHome(navigate);
+  }else {
+    navigate('/login')
+  }
 }
 
 export function irARegister(navigate){
-    navigate('/registro')
+    avigate('/registro')
 }
 
 export function irAInicio(navigate){
-    navigate('/')
+  navigate('/')
 }
 // LA IMPORTANTE: segun el perfil del user logueado,
 // lo mandamos a su home correspondiente, los perfiles son 
@@ -72,6 +72,10 @@ export function irAHome(navigate){
     irAInicio(navigate);
     break;
   }
+}
+
+export function loginAsGuest(navigate){
+  navigate("/cliente/inicio")
 }
 
 export function irAAdminInicio(navigate) {
