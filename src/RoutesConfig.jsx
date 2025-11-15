@@ -1,5 +1,16 @@
+// Dependencias
 import { Routes, Route } from "react-router-dom";
+
+// Landing
 import Inicio from "./pages/Inicio.jsx";
+
+// Layouts para protección por rol
+import AdminLayout from "./layouts/AdminLayout";
+import JefeLayout from "./layouts/JefeLayout";
+import TrabajadorLayout from "./layouts/TrabajadorLayout";
+import ClienteLayout from "./layouts/ClienteLayout";
+
+// Pages
 import AdminInicio from "./pages/admin/AdminInicio.jsx";
 import AdminCrearUsuario from "./pages/admin/AdminCrearUsuario.jsx";
 import AdminGestionUsuarios from "./pages/admin/AdminGestionUsuarios.jsx";
@@ -13,19 +24,47 @@ import NotFound404 from "./pages/errors/Error404.jsx";
 export default function RoutesConfig() {
   return (
     <Routes>
+      {/* Cualquier otra ruta */}
+      <Route path="*" element={<NotFound404 />} />
+      {/* DEFAULT - LANDING */}
       <Route path="/" element={<Inicio />} />
+
+      {/* PUBLICAS */}
+      <Route path="/unauthorized" element={<Unauthorized />} />
+      <Route path="/errors/404" element={<NotFound404 />} />
+      {/* ESTO ESTA desprotegido, todos pueden logearse o registrarse */}
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<RegistroCliente />} />
 
-      <Route path="/admin/inicio" element={<AdminInicio />} />
-      <Route path="/admin/crear-usuario" element={<AdminCrearUsuario />} />
-      <Route path="/admin/gestion-usuarios" element={<AdminGestionUsuarios />} />
-
-      <Route path="/jefe/inicio" element={<InicioJefe />} />
-      <Route path="/trabajador/inicio" element={<TrabajadorInicio />} />
       <Route path="/cliente/inicio" element={<ClienteInicio />} />
 
-      <Route path="/errors/404" element={<NotFound404 />} />
+      {/* ADMIN */}
+      <Route path="/admin" element={<AdminLayout />}>
+
+        {/* Todas estas rutas están protegidas solo por ser hijas de /admin  PARA eso es el LAYOUT, PROTEGE A LAS HIJAS*/}
+        <Route index element={<AdminInicio />} />
+        <Route path="inicio" element={<AdminInicio />} />
+
+        <Route path="crear-usuario" element={<AdminCrearUsuario />} />
+        <Route path="gestion-usuarios" element={<AdminGestionUsuarios />} />
+
+      </Route>
+
+      {/* Ya que lo hacemos, lo hacemos bien, para todos */}
+      <Route path="/jefe" element={<JefeLayout />}>
+      
+        <Route index element={<InicioJefe />}/>
+        <Route path="inicio" element={<InicioJefe />} />
+      
+      </Route>
+
+      <Route path="/trabajador" element={<TrabajadorLayout />}>
+      
+        <Route index element={<InicioJefe />}/>
+        <Route path="inicio" element={<InicioJefe />} />
+      
+      </Route>
+
     </Routes>
   );
 }
