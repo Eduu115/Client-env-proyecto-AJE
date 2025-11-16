@@ -5,8 +5,9 @@ function AdminGestionUsuarios() {
   return (
     <>
       <Navbar />
-          <h1>Usuarios</h1>
-          <table>
+      <main className="admin-gestion-usuarios">
+                <h1 class="titulo">Usuarios</h1>
+          <table class="tablaAdmin">
             <thead>
               <tr>
                 <th>ID</th>
@@ -35,7 +36,8 @@ function AdminGestionUsuarios() {
               )}
             </tbody>
           </table>
-    </main>
+      </main>
+    </>
   );
 }
 
