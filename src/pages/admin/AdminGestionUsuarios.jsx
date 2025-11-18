@@ -42,7 +42,7 @@ function AdminGestionUsuarios() {
 
     <main className="admin-gestion-usuarios">
       <Navbar />
-          <h1>Usuarios</h1>
+          <h1 className="titulo">Usuarios</h1>
           <table>
             <thead>
               <tr>
