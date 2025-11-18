@@ -22,14 +22,13 @@ body {
   flex-direction: column;
 }
 
-h1 {
-  color: #53646f;
+.titulo {
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;
 }
 
-table {
+.tablaAdmin table {
   width: 100%;
   border-collapse: collapse;
   border-radius: 8px;
@@ -38,7 +37,7 @@ table {
   table-layout: fixed; 
 }
 
-thead {
+.tablaAdmin thead {
   background: #363636;
   color: #fff;
   text-transform: uppercase;
@@ -46,7 +45,8 @@ thead {
   letter-spacing: 0.02em;
 }
 
-th,td {
+.tablaAdmin th,
+.tablaAdmin td {
   padding: 14px 12px;
   text-align: center;
   border-bottom: 1px solid #cbcecf;
