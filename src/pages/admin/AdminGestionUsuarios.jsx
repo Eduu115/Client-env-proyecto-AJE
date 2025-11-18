@@ -39,40 +39,47 @@ function AdminGestionUsuarios() {
   // Renderizamos la tabla de usuarios
   
   return (
-
-    <main className="admin-gestion-usuarios">
-      <Navbar />
-          <h1 className="titulo"> Usuarios</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>NOMBRE/USER</th>
-                <th>Correo</th>
-                <th>ROL</th>
-                <th>EDITAR</th>
-                <th>ELIMINAR</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Ejemplo de tabla de usuarios */}
-              {usuarios.length === 0 ? (  /* Si no carga nada imprimimos esto */
-                <p>Cargando usuarios...</p>
-              ) : (
-                usuarios.map((usuario) => ( /* Si hay usuarios los mapeamos (como un foreach)*/
-                  <tr key={usuario.id}>
-                    <td>{usuario.id}</td>
-                    <td>{usuario.name} o {usuario.username}</td>
-                    <td>{usuario.email}</td>
-                    <td>{usuario.role}</td>
-                    <td>icono o lo que sea</td>
-                    <td>icono o lo que sea</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-    </main>
+      <main className="admin-gestion-usuarios">
+        <h1 className="titulo"> Usuarios</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NOMBRE/USER</th>
+                  <th>Correo</th>
+                  <th>ROL</th>
+                  <th>EDITAR</th>
+                  <th>ELIMINAR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>admin1 o Carlos</td>
+                  <td>carlos.perez@example.com</td>
+                  <td>ADMIN</td>
+                  <td>icono o lo que sea</td>
+                  <td>icono o lo que sea</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>jefe1 o Laura</td>
+                  <td>laura.garcia@example.com</td>
+                  <td>JEFE</td>
+                  <td>icono o lo que sea</td>
+                  <td>icono o lo que sea</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>trabajador1 o Miguel</td>
+                  <td>miguel.rodriguez@example.com</td>
+                  <td>TRABAJADOR</td>
+                  <td>icono o lo que sea</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+      </main>
   );
 }
 
