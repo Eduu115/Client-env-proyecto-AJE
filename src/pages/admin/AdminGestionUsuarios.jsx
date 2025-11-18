@@ -39,7 +39,6 @@ function AdminGestionUsuarios() {
   // Renderizamos la tabla de usuarios
   
   return (
-
     <main className="admin-gestion-usuarios">
       <Navbar />
           <h1 className="titulo">Usuarios</h1>
@@ -77,3 +76,4 @@ function AdminGestionUsuarios() {
 }
 
 export default AdminGestionUsuarios;
+
