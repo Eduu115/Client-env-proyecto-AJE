@@ -22,12 +22,7 @@ body {
   flex-direction: column;
 }
 
-.titulo{
-  color: #53646f;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-align: center;
-}
+
 
 .tablaAdmin table {
   width: 100%;

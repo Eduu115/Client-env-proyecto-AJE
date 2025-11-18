@@ -1,7 +1,9 @@
-import { irAHome, irAInicio } from '../pages/Redirects.jsx';
+import { irAHome, irAInicio, logoutAndRedirect } from '../pages/Redirects.jsx';
 import './Navbar.css'
 import './navbarBlur.js'
 import { useNavigate } from "react-router-dom"; //hook
+
+const user = JSON.parse(localStorage.getItem('user'));
 
 function Navbar() {
   const navigate = useNavigate(); // inicio el hook
@@ -14,12 +16,21 @@ function Navbar() {
 
       <div className='links-container'>
           <button onClick={() => irAInicio(navigate)}>Tus datos</button>
-          <button className='log-out' onClick={() => irAInicio(navigate)}>Cerrar sesion</button>
+          {!user && (
+            <button onClick={() => irAHome(navigate)}>Home</button>
+          )}   
+          {user && (
+            <>
+              <button onClick={() => irAHome(navigate)}>Home {user.perfil.nombre}</button>
+              <button onClick={() => logoutAndRedirect(navigate)}>Logout</button>
+            </>
+          )}
+          
       </div>
 
       <div className='saludo-container'>
         <p className='saludo'>
-          Hola - QUIEN SEAS
+          Hola - {user ? user.name : 'Invitado'}
           {/* FALTA ESTO */}
         </p>
       </div>

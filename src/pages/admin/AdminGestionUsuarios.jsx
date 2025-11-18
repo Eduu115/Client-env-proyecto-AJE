@@ -1,13 +1,49 @@
 import Navbar from "../../components/Navbar";
 import "./AdminGestionUsuarios.css";
+import { useEffect, useState } from "react";
 
 function AdminGestionUsuarios() {
+  // --------------------- LOAD USERS ---------------------
+  // cargamos el user de LocalStorage
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  // cargamos los usuaruios desde una API o base de datos
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    const cargarDatos = async () => {
+      try {
+        const response = await fetch('localhost:9001/usuarios/', { /* HAY QUE ESTAR LOGUEADO COMO A */
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${btoa(`${user.username}:${user.password}`)}` // credenciales hardcodeadas por ahora
+          }
+        });
+        // si la respuesta no es ok, lanzamos un error
+        if (!response.ok) {
+          throw new Error('Error al cargar los usuarios');
+        }
+        // cargamsoos los datos
+        const data = await response.json();
+        setUsuarios(data);
+      
+      } catch (error) {
+        console.error('Error al cargar los usuarios:', error);
+      }
+    };
+    cargarDatos();
+  }, []);
+  // -------------------------------------------------------
+
+  // Renderizamos la tabla de usuarios
+  
   return (
-    <>
+
+    <main className="admin-gestion-usuarios">
       <Navbar />
-      <main className="admin-gestion-usuarios">
-                <h1 class="titulo">Usuarios</h1>
-          <table class="tablaAdmin">
+          <h1 className="titulo"> Usuarios</h1>
+          <table>
             <thead>
               <tr>
                 <th>ID</th>
@@ -36,9 +72,9 @@ function AdminGestionUsuarios() {
               )}
             </tbody>
           </table>
-      </main>
-    </>
+    </main>
   );
 }
 
 export default AdminGestionUsuarios;
+
