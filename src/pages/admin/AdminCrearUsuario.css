@@ -17,7 +17,7 @@
 }
 
 .crear-usuario-main {
-  flex: 1;                       /* ocupa todo el espacio central */
+  flex: 1;                   
   display: flex;
   justify-content: center;
   align-items: center;
