@@ -37,8 +37,8 @@ Simular un sistema de gestión de usuarios donde:
 Clonar el repositorio:
 
 ```bash
-git clone https://github.com/TU_USUARIO/TU_REPO.git
-cd TU_REPO
+git clone https://github.com/Eduu115/CLIENT-ENV-PROYECTO-AJE.git
+cd CLIENT-ENV-PROYECTO-AJE
 ````
 
 Instalar dependencias:
