@@ -6,6 +6,7 @@ function AdminGestionUsuarios() {
   // --------------------- LOAD USERS ---------------------
   // cargamos el user de LocalStorage
   const user = JSON.parse(localStorage.getItem('user'));
+  const clean = user.password.replace('{noop}', '');
 
   // cargamos los usuaruios desde una API o base de datos
   const [usuarios, setUsuarios] = useState([]);
@@ -17,7 +18,7 @@ function AdminGestionUsuarios() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${btoa(`${user.username}:${user.password}`)}` // credenciales hardcodeadas por ahora
+            'Authorization': `Basic ${btoa(`${user.username}:${clean}`)}` // credenciales hardcodeadas por ahora
           }
         });
         // si la respuesta no es ok, lanzamos un error

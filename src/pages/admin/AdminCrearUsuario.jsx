@@ -1,13 +1,17 @@
 import Navbar from "../../components/Navbar";
-import "./AdminCrearUsuario.css";
 import { useNavigate } from "react-router-dom";
 import { irAAdminInicio } from "../Redirects";
-import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
+import "./AdminCrearUsuario.css";
 
 function AdminCrearUsuario() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  console.log(user)
+
+  if (!user) navigate("/inicio");
 
   const [form, setForm] = useState({
     nombre: "",
@@ -33,25 +37,29 @@ function AdminCrearUsuario() {
     }
 
     try {
+
+      const clean = user.password.replace('{noop}', '');
+
       const response = await fetch("http://localhost:9001/usuarios/registro/admin", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Basic ${user.authToken}`
+          'Authorization': `Basic ${btoa(`${user.username}:${clean}`)}`,
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          username: form.username,
-          nombre: form.nombre,
-          apellidos: form.apellidos,
-          email: form.email,
-          password: "{noop}" + form.password,
-          fechaNacimiento: form.fecha_nacimiento,
-          direccion: form.direccion,
-          enabled: 1,
-          perfil: {
-            idPerfil: Number(form.id_perfil)
-          }
-        })
+        body: 
+          JSON.stringify({
+            username: form.username,
+            nombre: form.nombre,
+            apellidos: form.apellidos,
+            email: form.email,
+            password: form.password,
+            fechaNacimiento: form.fecha_nacimiento,
+            direccion: form.direccion,
+            enabled: 1,
+            perfil: {
+              idPerfil: Number(form.id_perfil)
+            }
+          })
       });
 
       if (!response.ok) {
@@ -116,7 +124,7 @@ function AdminCrearUsuario() {
             <div className="crear-row">
               <label htmlFor="perfil">Rol / Perfil</label>
               <select id="perfil" name="id_perfil" onChange={handleChange}>
-                <option value="">Selecciona un rol</option>
+                <option value="1">Selecciona un rol</option>
                 <option value="1">Administrador</option>
                 <option value="2">Jefe</option>
                 <option value="3">Trabajador</option>
