@@ -30,7 +30,7 @@ function Navbar() {
 
       <div className='saludo-container'>
         <p className='saludo'>
-          Hola - {user ? user.name : 'Invitado'}
+          Hola - {user ? user.nombre : 'Invitado'}
           {/* FALTA ESTO */}
         </p>
       </div>
