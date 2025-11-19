@@ -69,19 +69,10 @@ function Login() {
             Regístrate
           </button>
         </p>
-                <button
-                  type="button"
-                  className="login-back-button"
-                  onClick={() => irAInicio(navigate)}
-                >
-                  ← Volver al inicio
-                </button>
-                <button
-                  className="login-back-button"
-                  onClick={() => loginAsGuest(navigate)}
-                >
-                  - Entrar como invitado
-                </button>
+        <div className="login-buttons-container">
+            <button type="button"className="login-back-button" onClick={() => irAInicio(navigate)}>← Volver al inicio</button>
+            <button className="login-back-button" onClick={() => loginAsGuest(navigate)}>Entrar como invitado → </button>
+        </div>
       </div>
     </main>
   );
