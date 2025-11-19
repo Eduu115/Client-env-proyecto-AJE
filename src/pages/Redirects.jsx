@@ -45,7 +45,7 @@ export function irALogin(navigate){
 }
 
 export function irARegister(navigate){
-    avigate('/registro')
+    navigate('/registro')
 }
 
 export function irAInicio(navigate){
