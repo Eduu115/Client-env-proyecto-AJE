@@ -142,3 +142,10 @@
 .login-back-button:hover {
   opacity: 0.7;
 }
+
+.login-buttons-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 45px;
+}

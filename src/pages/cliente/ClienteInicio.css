@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap");
 
-/* Raíz de la vista del cliente (debajo del navbar fijo) */
 .cliente-page {
-  height: 100vh;                       /* ocupa toda la pantalla */
-  padding: 100px 80px 40px 80px;       /* 100px ≈ altura navbar + margen */
+  height: 100vh;                       
+  padding: 100px 80px 40px 80px;       
   box-sizing: border-box;
 }
 
