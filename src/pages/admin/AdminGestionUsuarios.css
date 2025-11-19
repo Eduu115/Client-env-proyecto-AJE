@@ -14,8 +14,7 @@ body {
 
 .admin-gestion-usuarios {
   height: 100vh;
-  box-sizing: border-box;
-  padding: 130px 80px 40px 80px;  
+  padding: 130px 80px 40px 80px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   display: flex;
@@ -28,16 +27,17 @@ body {
   text-align: center;
 }
 
-.tablaAdmin table {
+.tablaAdmin {
   width: 100%;
-  border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  table-layout: fixed; 
+  background: #fff;
 }
 
-.tablaAdmin thead {
+.tablaAdmin-header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   background: #363636;
   color: #fff;
   text-transform: uppercase;
@@ -45,10 +45,26 @@ body {
   letter-spacing: 0.02em;
 }
 
-.tablaAdmin th,
-.tablaAdmin td {
+.tablaAdmin-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-bottom: 1px solid #cbcecf;
+}
+
+.tablaAdmin-cell {
   padding: 14px 12px;
   text-align: center;
-  border-bottom: 1px solid #cbcecf;
   overflow-wrap: anywhere;
 }
+
+.tablaAdmin-row:last-child {
+  border-bottom: none;
+}
+
+.tablaAdmin-loading {
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+
