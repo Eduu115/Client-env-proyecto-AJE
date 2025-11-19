@@ -1,13 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap");
 
-/* Raíz de la vista del jefe (debajo del navbar fijo) */
 .jefe-page {
-  height: 100vh;                       /* ocupa toda la pantalla */
-  padding: 100px 80px 40px 80px;       /* 100px ≈ altura navbar + margen */
+  height: 100vh;                      
+  padding: 100px 80px 40px 80px;       
   box-sizing: border-box;
 }
-
-/* ---------------------- */
 
 .placeholder-page {
   height: 100%;
@@ -107,11 +104,37 @@
   cursor: pointer;
 }
 
-.placeholder-checkbox input {
-  width: 16px;
-  height: 16px;
+.placeholder-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;        
+  border: 2px solid #000;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  display: inline-block;
+  position: relative;
+  background-color: #f0f0f0;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
 }
 
+.placeholder-checkbox input[type="checkbox"]:checked {
+  background-color: #000;
+}
+
+.placeholder-checkbox input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 14px;
+  color: #fff;             
+  line-height: 1;
+}
 .placeholder-right {
   width: 60%;
   display: flex;
