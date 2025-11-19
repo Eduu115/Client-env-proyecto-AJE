@@ -19,30 +19,15 @@ export function AuthProvider({ children }) {
             });
 
             if (!response.ok) {
-            return false;
+                return false;
             }
 
             // Aquí parseamos la respuesta JSON del backend
             const userData = await response.json();
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             // Guardamos en estado y en localStorage
             setUser(userData);
             localStorage.setItem('user', JSON.stringify(userData));
-=======
->>>>>>> 27e5c247fb11024f4252727f1448d79a5b944e2f
-            // 👉 aquí generamos y guardamos el token Basic
-            const authToken = btoa(`${username}:${password}`);
-            const fullUser = { ...userData, authToken };
-
-            setUser(fullUser);
-            localStorage.setItem('user', JSON.stringify(fullUser));
-<<<<<<< HEAD
-=======
->>>>>>> 00b44ea8dbdb6581a1f09362d60b0d85d7b1b1fb
->>>>>>> 27e5c247fb11024f4252727f1448d79a5b944e2f
 
             return true;
         } catch (error) {
