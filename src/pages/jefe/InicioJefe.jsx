@@ -1,7 +1,12 @@
 import "./InicioJefe.css";
 import Navbar from "../../components/Navbar"; 
+import { useState } from "react";
+
 
 function InicioJefe() {
+
+    const [checked, setChecked] = useState(false);
+  
   return (
     <>
       <Navbar />
@@ -58,10 +63,20 @@ function InicioJefe() {
               </div>
             </div>
 
-            <label className="placeholder-checkbox">
+             <div className="placeholder-checkbox">
               Avísame cuando esta vista esté lista
-              <input type="checkbox" />
-            </label>
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={(e) => setChecked(e.target.checked)}
+              />
+              <br />
+              {checked && (
+              <p className="placeholder-msg">
+                Perfecto!! te avisaremos por email
+              </p>
+            )}
+            </div>
           </div>
 
           {/* Columna derecha: solo imagen */}

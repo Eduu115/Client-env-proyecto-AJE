@@ -1,7 +1,12 @@
 import "./TrabajadorInicio.css";
 import Navbar from "../../components/Navbar";
+import { useState } from "react";
+
 
 function TrabajadorInicio() {
+
+    const [checked, setChecked] = useState(false);
+  
   return (
     <>
       <Navbar />
@@ -28,13 +33,11 @@ function TrabajadorInicio() {
               diario y el progreso de cada proyecto.
             </p>
 
-            {/* Bloque correo de contacto */}
             <div className="placeholder-contact">
               <p className="placeholder-subtitle">DEJA TUS OPINIONES EN</p>
               <p className="placeholder-email">ejemplo-correo@empresa.com</p>
             </div>
 
-            {/* Bloque redes sociales con iconos */}
             <div className="placeholder-social">
               <p className="placeholder-subtitle">
                 SÍGUENOS EN NUESTRAS REDES
@@ -65,10 +68,20 @@ function TrabajadorInicio() {
               </div>
             </div>
 
-            <label className="placeholder-checkbox">
+            <div className="placeholder-checkbox">
               Avísame cuando esta vista esté lista
-              <input type="checkbox" />
-            </label>
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={(e) => setChecked(e.target.checked)}
+              />
+              <br />
+              {checked && (
+              <p className="placeholder-msg">
+                Perfecto!! te avisaremos por email
+              </p>
+            )}
+            </div>
           </div>
 
           {/* Columna derecha: solo imagen */}
