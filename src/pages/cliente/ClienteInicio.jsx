@@ -1,7 +1,10 @@
 import "./ClienteInicio.css";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
 
 function ClienteInicio() {
+  const [checked, setChecked] = useState(false);
+
   return (
     <>
       <Navbar />
@@ -21,8 +24,9 @@ function ClienteInicio() {
             </h1>
 
             <p className="placeholder-text">
-              Estamos trabajando en la experiencia para clientes. Aquí podrás ver
-              tus proyectos, solicitudes y todo lo que tengas con la empresa.
+              Estamos trabajando en la experiencia para clientes. Aquí podrás
+              ver tus proyectos, solicitudes y todo lo que tengas con la
+              empresa.
             </p>
 
             <div className="placeholder-contact">
@@ -31,9 +35,7 @@ function ClienteInicio() {
             </div>
 
             <div className="placeholder-social">
-              <p className="placeholder-subtitle">
-                SÍGUENOS EN NUESTRAS REDES
-              </p>
+              <p className="placeholder-subtitle">SÍGUENOS EN NUESTRAS REDES</p>
               <div className="social-icons">
                 <a
                   href="https://www.instagram.com"
@@ -41,10 +43,7 @@ function ClienteInicio() {
                   rel="noreferrer"
                   className="social-link"
                 >
-                  <img
-                    src="/logotipo-de-instagram.png"
-                    alt="Instagram"
-                  />
+                  <img src="/logotipo-de-instagram.png" alt="Instagram" />
                 </a>
                 <a
                   href="https://www.linkedin.com"
@@ -52,18 +51,28 @@ function ClienteInicio() {
                   rel="noreferrer"
                   className="social-link"
                 >
-                  <img
-                    src="/linkedin.png"
-                    alt="LinkedIn"
-                  />
+                  <img src="/linkedin.png" alt="LinkedIn" />
                 </a>
               </div>
             </div>
 
-            <label className="placeholder-checkbox">
+            
+            <div className="placeholder-checkbox">
               Avísame cuando esta vista esté lista
-              <input type="checkbox" />
-            </label>
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={(e) => setChecked(e.target.checked)}
+              />
+              <br />
+              {checked && (
+              <p className="placeholder-msg">
+                Perfecto!! te avisaremos por email
+              </p>
+            )}
+            </div>
+
+            
           </div>
 
           {/* Columna derecha: solo imagen */}
