@@ -5,8 +5,12 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 function Login() {
-  const navigate = useNavigate(); // inicio el hook
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  
+  const navigate = useNavigate(); // inicio el hook
+  if (user) irAHome(navigate);
+  
   const form = document.getElementById("login-form");
 
   const { login } = useAuth();
@@ -21,6 +25,7 @@ function Login() {
     if (!ok){
       setError('Credenciales inválidas');
     } else {
+
       irAHome(navigate);
     }
   };
