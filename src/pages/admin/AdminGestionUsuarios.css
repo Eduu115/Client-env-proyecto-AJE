@@ -38,7 +38,7 @@ body {
   
 }
 
-.tablaAdmin-header {
+.tablaAdmin-titulos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   background: #363636;
@@ -48,19 +48,19 @@ body {
   letter-spacing: 0.02em;
 }
 
-.tablaAdmin-row {
+.tablaAdmin-contenido {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   border-bottom: 1px solid #cbcecf;
 }
 
-.tablaAdmin-cell {
+.tablaAdmin-cuadro {
   padding: 14px 12px;
   text-align: center;
   overflow-wrap: anywhere;
 }
 
-.tablaAdmin-row:last-child {
+.tablaAdmin-contenido:last-child {
   border-bottom: none;
 }
 
