@@ -8,8 +8,9 @@ function AdminGestionUsuarios() {
   const user = JSON.parse(localStorage.getItem("user"));
   const clean = user.password.replace("{noop}", "");
 
- // cargamos los usuaruios desde una API o base de datos
+  // cargamos los usuaruios desde una API o base de datos
   const [usuarios, setUsuarios] = useState([]);
+  const [editUser, setEditUser] = useState(null);
 
   useEffect(() => {
     const cargarDatos = async () => {
@@ -25,7 +26,7 @@ function AdminGestionUsuarios() {
         if (!response.ok) {
           throw new Error("Error al cargar los usuarios");
         }
-        // cargamsoos los datos
+        // cargamos los datos
         const data = await response.json();
         setUsuarios(data);
       } catch (error) {
@@ -34,52 +35,118 @@ function AdminGestionUsuarios() {
     };
 
     cargarDatos();
-  }, []); 
+  }, []);
 
-    const handleEditClick = (usuario) => {
-      // abrimos el popup clonando el usuario
-      setEditUser({ ...usuario });
+
+  const handleEditClick = (usuario) => {
+    setEditUser({ ...usuario });
+  };
+
+  const handleClosePopup = () => {
+    setEditUser(null);
+  };
+
+  const handleChangeEdit = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "idPerfil") {
+      setEditUser((prev) => ({
+        ...prev,
+        perfil: { ...(prev.perfil || {}), idPerfil: Number(value) },
+      }));
+    } else {
+      setEditUser((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleSubmitEdit = async (e) => {
+    e.preventDefault();
+
+    const original = usuarios.find((u) => u.username === editUser.username);
+
+    if (!original) {
+      console.error("No se encontró el usuario original en el estado");
+      alert("Error interno: usuario no encontrado.");
+      return;
+    }
+
+    const payload = {
+      username: original.username,
+      password: original.password,
+      email: editUser.email,
+      nombre: editUser.nombre,
+      apellidos: editUser.apellidos,
+      enabled: original.enabled,
+      direccion: original.direccion,
+      fechaRegistro: original.fechaRegistro,
+      fechaNacimiento: original.fechaNacimiento,
+      perfil: {
+        ...(original.perfil || {}),
+        idPerfil: editUser.perfil?.idPerfil
+          ? Number(editUser.perfil.idPerfil)
+          : original.perfil?.idPerfil,
+      },
     };
-  
-    const handleClosePopup = () => {
-      setEditUser(null);
-    };
-  
-    // cambios en el formulario del popup
-    const handleChangeEdit = (e) => {
-      const { name, value } = e.target;
-  
-      // caso especial: perfil.idPerfil (rol)
-      if (name === "idPerfil") {
-        setEditUser((prev) => ({
-          ...prev,
-          perfil: { ...(prev.perfil || {}), idPerfil: Number(value) },
-        }));
-      } else {
-        setEditUser((prev) => ({
-          ...prev,
-          [name]: value,
-        }));
+
+    try {
+      const response = await fetch(
+        `http://localhost:9001/usuarios/actualizar/${editUser.username}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ${btoa(`${user.username}:${clean}`)}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("ERROR ACTUALIZAR - STATUS:", response.status);
+        console.error("ERROR ACTUALIZAR - BODY:", errorText);
+        throw new Error("Error al actualizar el usuario");
       }
-    };
 
-  
+      const actualizado = await response.json();
+
+
+      setUsuarios((prev) =>
+        prev.map((u) =>
+          u.username === actualizado.username ? actualizado : u
+        )
+      );
+
+      handleClosePopup();
+      alert("Se actualizado el Usuario correctamente");
+    } catch (error) {
+      console.error("CATCH handleSubmitEdit:", error);
+      alert("Error al actualizar usuario");
+    }
+  };
+
   const eliminado = async (username) => {
     const confirmar = window.confirm(`¿Eliminar usuario ${username}?`);
     if (!confirmar) return;
-  
+
     try {
-      const response = await fetch(`http://localhost:9001/usuarios/eliminar/${username}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Basic ${btoa(`${user.username}:${clean}`)}`,
-        },
-      });
-  
-      const resultado = await response.json(); 
-  
+      const response = await fetch(
+        `http://localhost:9001/usuarios/eliminar/${username}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Basic ${btoa(`${user.username}:${clean}`)}`,
+          },
+        }
+      );
+
+      const resultado = await response.json();
+
       if (resultado === 1) {
-        setUsuarios(prev => prev.filter(u => u.username !== username));
+        setUsuarios((prev) => prev.filter((u) => u.username !== username));
       } else {
         alert("El usuario no existe.");
       }
@@ -88,7 +155,6 @@ function AdminGestionUsuarios() {
       alert("Error al eliminar usuario.");
     }
   };
-  
 
   // -------------------------------------------------------
 
@@ -100,32 +166,96 @@ function AdminGestionUsuarios() {
       <h1 className="titulo">Usuarios</h1>
 
       <section className="tablaAdmin">
-        {/* Cabecera de la "tabla" */}
-        <div className="tablaAdmin-header">
-          <div className="tablaAdmin-cell">ID</div>
-          <div className="tablaAdmin-cell">NOMBRE/USER</div>
-          <div className="tablaAdmin-cell">Correo</div>
-          <div className="tablaAdmin-cell">ROL</div>
-          <div className="tablaAdmin-cell">EDITAR</div>
-          <div className="tablaAdmin-cell">ELIMINAR</div>
+        <div className="tablaAdmin-titulos">
+          <div className="tablaAdmin-cuadro">ID</div>
+          <div className="tablaAdmin-cuadro">NOMBRE/USER</div>
+          <div className="tablaAdmin-cuadro">Correo</div>
+          <div className="tablaAdmin-cuadro">ROL</div>
+          <div className="tablaAdmin-cuadro">EDITAR</div>
+          <div className="tablaAdmin-cuadro">ELIMINAR</div>
         </div>
 
-        {/* Filas de usuarios */}
         {usuarios.length === 0 ? (
           <p className="tablaAdmin-loading">Cargando usuarios...</p>
         ) : (
           usuarios.map((usuario) => (
-            <div className="tablaAdmin-row" key={usuario.username}>
-              <div className="tablaAdmin-cell">{usuario.username}</div>
-              <div className="tablaAdmin-cell">{usuario.nombre} {usuario.apellidos}</div>
-              <div className="tablaAdmin-cell">{usuario.email}</div>
-              <div className="tablaAdmin-cell">{usuario.perfil?.nombre || "Sin rol"}</div> 
-              <div className="tablaAdmin-cell"><button className="icon-button editar" onClick={() => edit(usuario)}>Editar</button></div>
-              <div className="tablaAdmin-cell"><button className="icon-button eliminar" onClick={() => eliminado(usuario.username)}>Eliminar</button></div>
+            <div className="tablaAdmin-contenido" key={usuario.username}>
+              <div className="tablaAdmin-cuadro">{usuario.username}</div>
+              <div className="tablaAdmin-cuadro">{usuario.nombre} {usuario.apellidos}</div>
+              <div className="tablaAdmin-cuadro">{usuario.email}</div>
+              <div className="tablaAdmin-cuadro">{usuario.perfil?.nombre || "Sin rol"}</div>
+              <div className="tablaAdmin-cuadro"><button className="icon-editar" onClick={() => handleEditClick(usuario)}>✏️</button></div>
+              <div className="tablaAdmin-cuadro"><button className="icon-eliminar" onClick={() => eliminado(usuario.username)}>Eliminar</button></div>
             </div>
           ))
         )}
       </section>
+
+      {editUser && (
+        <div className="popup-overlay">
+          <div className="popup show">
+            <h2>Editar usuario: {editUser.username}</h2>
+
+            <form onSubmit={handleSubmitEdit} className="popup-form">
+              <label>
+                Nombre
+                <input
+                  name="nombre"
+                  value={editUser.nombre || ""}
+                  onChange={handleChangeEdit}
+                />
+              </label>
+
+              <label>
+                Apellidos
+                <input
+                  name="apellidos"
+                  value={editUser.apellidos || ""}
+                  onChange={handleChangeEdit}
+                />
+              </label>
+
+              <label>
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  value={editUser.email || ""}
+                  onChange={handleChangeEdit}
+                />
+              </label>
+
+              <label>
+                Rol
+                <select
+                  name="idPerfil"
+                  value={editUser.perfil?.idPerfil || ""}
+                  onChange={handleChangeEdit}
+                >
+                  <option value="">-- Selecciona rol --</option>
+                  <option value={1}>ADMIN</option>
+                  <option value={2}>JEFE</option>
+                  <option value={3}>CLIENTE</option>
+                  <option value={4}>TRABAJADOR</option>
+                </select>
+              </label>
+
+              <div className="popup-buttons">
+                <button
+                  type="button"
+                  className="btn-secundario"
+                  onClick={handleClosePopup}
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className="btn-primario">
+                  Guardar cambios
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
