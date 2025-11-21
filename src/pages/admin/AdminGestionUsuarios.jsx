@@ -230,7 +230,7 @@ function AdminGestionUsuarios() {
 
       {/* BARRA DE FILTROS */}
         <div className="barra-filtros">
-          {/* Primera fila de filtros */}
+          {/* PPRIMERA FILA */}
           <div className="filtros-fila-principal">
             {/* Búsqueda */}
             <div className="filtro-grupo">
@@ -246,7 +246,7 @@ function AdminGestionUsuarios() {
               />
             </div>
 
-            {/* Filtro por Rol */}
+            {/* Rol */}
             <div className="filtro-grupo">
               <label className="filtro-label">
                 Filtrar por rol
@@ -264,7 +264,7 @@ function AdminGestionUsuarios() {
               </select>
             </div>
 
-            {/* Ordenamiento */}
+            {/* Ordendando */}
             <div className="filtro-grupo">
               <label className="filtro-label">
                 ⬍ Ordenar por
@@ -281,7 +281,7 @@ function AdminGestionUsuarios() {
               </select>
             </div>
 
-            {/* Botón Limpiar */}
+            {/* Limpiar */}
             <button
               className="btn-limpiar-filtros"
               onClick={limpiarFiltros}
@@ -290,7 +290,7 @@ function AdminGestionUsuarios() {
             </button>
           </div>
 
-          {/* Segunda fila: Filtros de fecha */}
+          {/* Filtros de fecha */}
           <div className="filtros-fila-fecha">
             {/* Fecha Desde */}
             <div className="filtro-grupo">
@@ -318,16 +318,16 @@ function AdminGestionUsuarios() {
               />
             </div>
 
-            {/* Espacio vacío para alineación */}
+            {/* Espacio vacio pa alinear todo */}
             <div></div>
           </div>
 
-          {/* Contador de resultados */}
+          {/* Contador  */}
           <div className="filtros-contador">
             Mostrando {usuariosFiltrados.length} de {usuarios.length} usuarios
             {(fechaDesde || fechaHasta) && (
               <span className="filtros-indicador-fecha">
-                📊 Filtrado por fecha: {fechaDesde || "inicio"} → {fechaHasta || "hoy"}
+                Filtrado por fecha: {fechaDesde || "inicio"} → {fechaHasta || "hoy"}
               </span>
             )}
           </div>

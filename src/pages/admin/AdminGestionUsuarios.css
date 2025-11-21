@@ -181,7 +181,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Primera fila de filtros */
 .filtros-fila-principal {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr auto;
@@ -190,7 +189,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Segunda fila: filtros de fecha */
 .filtros-fila-fecha {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
@@ -198,7 +196,6 @@ body {
   align-items: end;
 }
 
-/* Estilo para cada grupo de filtro */
 .filtro-grupo {
   display: flex;
   flex-direction: column;
@@ -212,7 +209,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Inputs de texto y fecha */
 .filtro-input {
   width: 100%;
   padding: 0.75rem;
@@ -254,7 +250,7 @@ body {
   border-color: #aaa;
 }
 
-/* Botón limpiar filtros */
+
 .btn-limpiar-filtros {
   padding: 0.75rem 1.5rem;
   background: #6c757d;
@@ -276,7 +272,7 @@ body {
   transform: translateY(1px);
 }
 
-/* Contador de resultados */
+
 .filtros-contador {
   margin-top: 1rem;
   color: #666;
@@ -292,7 +288,7 @@ body {
   font-weight: 500;
 }
 
-/* Responsive */
+/* Petaba en las dimensiones pequeñas, le pedi a chati un responsive ahi bien guapo */
 @media (max-width: 1200px) {
   .filtros-fila-principal {
     grid-template-columns: 1fr 1fr;
