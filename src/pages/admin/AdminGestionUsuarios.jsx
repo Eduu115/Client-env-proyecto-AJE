@@ -12,6 +12,69 @@ function AdminGestionUsuarios() {
   const [usuarios, setUsuarios] = useState([]);
   const [editUser, setEditUser] = useState(null);
 
+// ------------------------------------------- FILTRTOS
+  const [busqueda, setBusqueda] = useState("");
+  const [filtroRol, setFiltroRol] = useState("");
+  const [ordenamiento, setOrdenamiento] = useState("nombre");
+  const [fechaDesde, setFechaDesde] = useState("");
+  const [fechaHasta, setFechaHasta] = useState("");
+
+  const usuariosFiltrados = usuarios
+    .filter((usuario) => {
+      // Filtro por búsqueda (nombre, apellidos o username)
+      const terminoBusqueda = busqueda.toLowerCase();
+      const coincideBusqueda = 
+        (usuario.nombre || "").toLowerCase().includes(terminoBusqueda) ||
+        (usuario.apellidos || "").toLowerCase().includes(terminoBusqueda) ||
+        (usuario.username || "").toLowerCase().includes(terminoBusqueda);
+
+      // Filtro por rol
+      const coincideRol = filtroRol === "" || usuario.perfil?.idPerfil === Number(filtroRol);
+
+      // Filtro por fecha de registro
+      let coincideFecha = true;
+      
+      if (usuario.fechaRegistro) {
+        const fechaUsuario = new Date(usuario.fechaRegistro);
+        
+        if (fechaDesde) {
+          const desde = new Date(fechaDesde);
+          coincideFecha = coincideFecha && fechaUsuario >= desde;
+        }
+        
+        if (fechaHasta) {
+          const hasta = new Date(fechaHasta);
+          hasta.setHours(23, 59, 59, 999); // Incluir todo el día
+          coincideFecha = coincideFecha && fechaUsuario <= hasta;
+        }
+      }
+      return coincideBusqueda && coincideRol && coincideFecha;
+    })
+    .sort((a, b) => {
+      // Ordenamiento
+      if (ordenamiento === "nombre") {
+        return a.nombre.localeCompare(b.nombre);
+      } else if (ordenamiento === "email") {
+        return a.email.localeCompare(b.email);
+      } else if (ordenamiento === "rol") {
+        return (a.perfil?.nombre || "").localeCompare(b.perfil?.nombre || "");
+      } else if (ordenamiento === "fecha") {
+        return new Date(b.fechaRegistro || 0) - new Date(a.fechaRegistro || 0);
+      }
+      return 0;
+    });
+
+  // limpiar
+  const limpiarFiltros = () => {
+    setBusqueda("");
+    setFiltroRol("");
+    setOrdenamiento("nombre");
+    setFechaDesde("");
+    setFechaHasta("");
+  };
+
+  // ----------------------------------------
+  // CARGAMOS USERS
   useEffect(() => {
     const cargarDatos = async () => {
       try {
@@ -165,6 +228,111 @@ function AdminGestionUsuarios() {
       <Navbar />
       <h1 className="titulo">Usuarios</h1>
 
+      {/* BARRA DE FILTROS */}
+        <div className="barra-filtros">
+          {/* Primera fila de filtros */}
+          <div className="filtros-fila-principal">
+            {/* Búsqueda */}
+            <div className="filtro-grupo">
+              <label className="filtro-label">
+                Buscar por nombre o usuario
+              </label>
+              <input
+                type="text"
+                className="filtro-input"
+                placeholder="Escribe para buscar..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+              />
+            </div>
+
+            {/* Filtro por Rol */}
+            <div className="filtro-grupo">
+              <label className="filtro-label">
+                Filtrar por rol
+              </label>
+              <select
+                className="filtro-select"
+                value={filtroRol}
+                onChange={(e) => setFiltroRol(e.target.value)}
+              >
+                <option value="">Todos los roles</option>
+                <option value="1">ADMIN</option>
+                <option value="2">JEFE</option>
+                <option value="3">CLIENTE</option>
+                <option value="4">TRABAJADOR</option>
+              </select>
+            </div>
+
+            {/* Ordenamiento */}
+            <div className="filtro-grupo">
+              <label className="filtro-label">
+                ⬍ Ordenar por
+              </label>
+              <select
+                className="filtro-select"
+                value={ordenamiento}
+                onChange={(e) => setOrdenamiento(e.target.value)}
+              >
+                <option value="nombre">Nombre</option>
+                <option value="email">Email</option>
+                <option value="rol">Rol</option>
+                <option value="fecha">Fecha de registro</option>
+              </select>
+            </div>
+
+            {/* Botón Limpiar */}
+            <button
+              className="btn-limpiar-filtros"
+              onClick={limpiarFiltros}
+            >
+              Limpiar
+            </button>
+          </div>
+
+          {/* Segunda fila: Filtros de fecha */}
+          <div className="filtros-fila-fecha">
+            {/* Fecha Desde */}
+            <div className="filtro-grupo">
+              <label className="filtro-label">
+                Desde
+              </label>
+              <input
+                type="date"
+                className="filtro-input"
+                value={fechaDesde}
+                onChange={(e) => setFechaDesde(e.target.value)}
+              />
+            </div>
+
+            {/* Fecha Hasta */}
+            <div className="filtro-grupo">
+              <label className="filtro-label">
+                Hasta
+              </label>
+              <input
+                type="date"
+                className="filtro-input"
+                value={fechaHasta}
+                onChange={(e) => setFechaHasta(e.target.value)}
+              />
+            </div>
+
+            {/* Espacio vacío para alineación */}
+            <div></div>
+          </div>
+
+          {/* Contador de resultados */}
+          <div className="filtros-contador">
+            Mostrando {usuariosFiltrados.length} de {usuarios.length} usuarios
+            {(fechaDesde || fechaHasta) && (
+              <span className="filtros-indicador-fecha">
+                📊 Filtrado por fecha: {fechaDesde || "inicio"} → {fechaHasta || "hoy"}
+              </span>
+            )}
+          </div>
+        </div>
+
       <section className="tablaAdmin">
         <div className="tablaAdmin-titulos">
           <div className="tablaAdmin-cuadro">ID</div>
@@ -178,7 +346,7 @@ function AdminGestionUsuarios() {
         {usuarios.length === 0 ? (
           <p className="tablaAdmin-loading">Cargando usuarios...</p>
         ) : (
-          usuarios.map((usuario) => (
+          usuariosFiltrados.map((usuario) => (
             <div className="tablaAdmin-contenido" key={usuario.username}>
               <div className="tablaAdmin-cuadro">{usuario.username}</div>
               <div className="tablaAdmin-cuadro">{usuario.nombre} {usuario.apellidos}</div>
