@@ -15,7 +15,7 @@ import TrabajadorLayout from "./layouts/TrabajadorLayout";
 import ClienteLayout from "./layouts/ClienteLayout";
 
 // Pages
-import Unauthorized from "./pages/errors/Unauthorized.jsx"
+import Error403 from "./pages/errors/Error403.jsx"
 import AdminInicio from "./pages/admin/AdminInicio.jsx";
 import AdminCrearUsuario from "./pages/admin/AdminCrearUsuario.jsx";
 import AdminGestionUsuarios from "./pages/admin/AdminGestionUsuarios.jsx";
@@ -37,7 +37,7 @@ export default function RoutesConfig() {
       </Route>
 
       {/* PUBLICAS */}
-      <Route path="/errors/unauthorized" element={<Unauthorized />} />
+      <Route path="/errors/unauthorized" element={<Error403 />} />
       <Route path="/errors/404" element={<NotFound404 />} />
       {/* ESTO ESTA desprotegido, todos pueden logearse o registrarse */}
       <Route path="/login" element={<Login />} />

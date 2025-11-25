@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { PERMISOS, ROLES } from "../utils/perfilSymbols";
 
-export default function ProtectedRoute({ roles = [], redirectTo = "/unauthorized" }) {
+export default function ProtectedRoute({ roles = [], redirectTo = "/errors/unauthorized" }) {
   // Obtener usuario del localStorage o asignar GUEST por defecto
   const user = JSON.parse(localStorage.getItem("user")) || { perfil: { nombre: ROLES.GUEST } };
 

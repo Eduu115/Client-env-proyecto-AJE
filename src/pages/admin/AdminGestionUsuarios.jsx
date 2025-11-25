@@ -259,8 +259,8 @@ function AdminGestionUsuarios() {
                 <option value="">Todos los roles</option>
                 <option value="1">ADMIN</option>
                 <option value="2">JEFE</option>
-                <option value="3">CLIENTE</option>
-                <option value="4">TRABAJADOR</option>
+                <option value="3">TRABAJADOR</option>
+                <option value="4">CLIENTE</option>
               </select>
             </div>
 

@@ -15,7 +15,6 @@ function Navbar() {
       <img src="/logo.png" alt="logo" onClick={() => irAInicio(navigate)} />
 
       <div className='links-container'>
-          <button onClick={() => irAInicio(navigate)}>Tus datos</button>
           {!user && (
             <button onClick={() => irAHome(navigate)}>Home</button>
           )}   
